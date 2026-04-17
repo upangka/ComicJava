@@ -22,20 +22,25 @@
 
 ```
 ComicJava/
-├── src/
-│   ├── beginner/          # 第一本代码
-│   ├── intermediate/      # 第二本代码
-│   └── advanced/          # 第三本代码
+├── src/                      # 源代码目录
+│   └── com/
+│       └── comicjava/        # 按包名组织
+│           ├── Main.java     # 主入口
+│           ├── ch01/         # 第一章
+│           ├── ch02/         # 第二章
+│           └── ...
+├── bin/                      # 编译输出目录 (无需提交)
 └── README.md
 ```
 
-## 🛠️ 运行方式
+## 🛠️ 编译运行
 
 ```bash
-# 编译并运行示例
-cd ComicJava
-javac -d out src/beginner/chapter1/HelloWorld.java
-java -cp out beginner.chapter1.HelloWorld
+# 编译 (在项目根目录)
+javac -d bin src/com/comicjava/Main.java
+
+# 运行
+java -cp bin com.comicjava.Main
 ```
 
 ## 📖 学习笔记
