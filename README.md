@@ -6,7 +6,7 @@
 ## 📚 学习进度
 
 ### 第一本：Easy Beginner
-- [ ] 第一章：Java基础
+- [x] 第一章：Java基础
 - [ ] 第二章：变量与数据类型
 - [ ] 第三章：控制流程
 - [ ] 第四章：面向对象编程
@@ -26,6 +26,7 @@ ComicJava/
 │   └── cn/
 │       └── comicjava/
 ├── notes/                    # 学习笔记
+│   ├── ch01-first-program.md
 │   └── Git学习笔记.md
 ├── .codebuddy/               # CodeBuddy 规则
 ├── bin/                      # 编译输出 (不提交)
@@ -44,4 +45,5 @@ java -cp bin cn.comicjava.Main
 
 ## 📖 学习笔记
 
+- [ch01-编写第一个程序](./notes/ch01-编写第一个程序.md)
 - [Git学习笔记](./notes/Git学习笔记.md) - Git 操作与 SSH 配置
