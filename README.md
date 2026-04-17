@@ -22,14 +22,13 @@
 
 ```
 ComicJava/
-├── src/                      # 源代码目录
+├── src/                      # Java 源代码
 │   └── cn/
-│       └── comicjava/        # 按包名组织
-│           ├── Main.java     # 主入口
-│           ├── ch01/         # 第一章
-│           ├── ch02/         # 第二章
-│           └── ...
-├── bin/                      # 编译输出目录 (无需提交)
+│       └── comicjava/
+├── notes/                    # 学习笔记
+│   └── Git学习笔记.md
+├── .codebuddy/               # CodeBuddy 规则
+├── bin/                      # 编译输出 (不提交)
 └── README.md
 ```
 
@@ -45,4 +44,4 @@ java -cp bin cn.comicjava.Main
 
 ## 📖 学习笔记
 
-记录每章的重点和心得体会。
+- [Git学习笔记](./notes/Git学习笔记.md) - Git 操作与 SSH 配置
