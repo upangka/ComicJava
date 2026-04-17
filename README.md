@@ -23,7 +23,7 @@
 ```
 ComicJava/
 ├── src/                      # 源代码目录
-│   └── com/
+│   └── cn/
 │       └── comicjava/        # 按包名组织
 │           ├── Main.java     # 主入口
 │           ├── ch01/         # 第一章
@@ -37,10 +37,10 @@ ComicJava/
 
 ```bash
 # 编译 (在项目根目录)
-javac -d bin src/com/comicjava/Main.java
+javac -d bin src/cn/comicjava/Main.java
 
 # 运行
-java -cp bin com.comicjava.Main
+java -cp bin cn.comicjava.Main
 ```
 
 ## 📖 学习笔记

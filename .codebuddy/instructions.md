@@ -8,7 +8,7 @@
 ## 技术规范
 - 不使用 Maven、Gradle 等构建工具
 - 纯 Java 代码，手动编译运行
-- 包名：`com.comicjava`
+- 包名：`cn.comicjava`
 
 ## 代码组织
 - 源代码：`src/`
@@ -17,6 +17,6 @@
 
 ## 编译运行命令
 ```bash
-javac -d bin src/com/comicjava/Main.java
-java -cp bin com.comicjava.Main
+javac -d bin src/cn/comicjava/Main.java
+java -cp bin cn.comicjava.Main
 ```

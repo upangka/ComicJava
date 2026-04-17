@@ -1,4 +1,4 @@
-package com.comicjava;
+package cn.comicjava;
 
 public class Main {
     public static void main(String[] args) {
