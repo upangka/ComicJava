@@ -32,5 +32,8 @@ java -cp bin cn.comicjava.Main
 
 ## 创建笔记
 
-当创建笔记的时候在notes目录下创建笔记：格式为ch01-xxx.md的格式。其中xxx不能为英文，指定中文
-并且添加到README.md中
+创建笔记时遵循以下规范：
+
+1. **文件命名**：`notes/ch01-中文标题.md`（ch + 章节号 + 中文标题）
+2. **代码链接**：笔记中涉及的 `.java` 文件，需添加 GitHub 仓库链接（格式：`https://github.com/upangka/ComicJava/blob/main/src/...`）
+3. **更新目录**：同步更新 `README.md` 中的学习笔记列表
