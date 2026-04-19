@@ -46,4 +46,5 @@ java -cp bin cn.comicjava.Main
 ## 📖 学习笔记
 
 - [ch01-编写第一个程序](./notes/ch01-编写第一个程序.md)
+- [ch02-类和对象](./notes/ch02-类和对象.md) - 渐进更新中...
 - [Git学习笔记](./notes/Git学习笔记.md) - Git 操作与 SSH 配置
