@@ -25,9 +25,10 @@ ComicJava/
 ├── src/                      # Java 源代码
 │   └── cn/
 │       └── comicjava/
+│           ├── ch01/          # 第一章代码
+│           └── ch02/          # 第二章代码
 ├── notes/                    # 学习笔记
-│   ├── ch01-first-program.md
-│   └── Git学习笔记.md
+├── images/                   # 图片资源
 ├── .codebuddy/               # CodeBuddy 规则
 ├── bin/                      # 编译输出 (不提交)
 └── README.md
