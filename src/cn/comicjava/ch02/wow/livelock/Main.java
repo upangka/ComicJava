@@ -4,8 +4,10 @@ public class Main {
     public static void main(String[] args) {
         final Dwarf dwarf = new Dwarf("矮人");
         final NightElf nightElf = new NightElf("暗夜精灵");
-        
-       new Thread(() -> dwarf.visit(nightElf), "矮人线程").start();
-       new Thread(() -> nightElf.visit(dwarf), "暗夜精灵线程").start();
+        final Beer beer = new Beer(dwarf);
+       
+        new Thread(() -> dwarf.drink(beer, nightElf)).start();
+        new Thread(() -> nightElf.drink(beer, dwarf)).start();
+
     }
 }
