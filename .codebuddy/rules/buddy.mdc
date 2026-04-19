@@ -37,6 +37,11 @@ java -cp bin cn.comicjava.Main
 1. **文件命名**：`notes/ch01-中文标题.md`（ch + 章节号 + 中文标题）
 2. **代码链接**：笔记中涉及的 `.java` 文件，需添加 GitHub 仓库链接（格式：`https://github.com/upangka/ComicJava/blob/main/src/...`）
 3. **更新目录**：同步更新 `README.md` 中的学习笔记列表
+4. **标题格式**：
+   - 不需要文章名称作为一级标题，内容直接以一级标题 `##` 开始
+   - 子标题级别连续：一级 `#` → 二级 `##` → 三级 `###`
+   - 去掉章节编号（如 `2.1`、`2.2`），直接使用内容名称
+5. **图片路径**：笔记在 `notes/` 目录，引用 `images/` 目录时使用 `../images/`
 
 ## Git 提交规范
 - 当用户说"提交"时，自动执行 `git add` + `git commit` + `git push`，直接推送到 GitHub
