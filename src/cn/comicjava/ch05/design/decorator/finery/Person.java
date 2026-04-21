@@ -1,4 +1,4 @@
-package cn.comicjava.ch05.design.decorator;
+package cn.comicjava.ch05.design.decorator.finery;
 
 public class Person implements ICharacter {
     private String name;
