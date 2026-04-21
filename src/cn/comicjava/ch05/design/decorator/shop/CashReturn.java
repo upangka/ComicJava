@@ -26,6 +26,6 @@ public class CashReturn extends CashSuper {
             result = result - Math.floor((result / moneyCondition)) * moneyReturn;
         }
         // 已经计算好所有商品的价格，数量变成1
-        return super.acceptCash(price, 1);
+        return super.acceptCash(result, 1);
     }
 }

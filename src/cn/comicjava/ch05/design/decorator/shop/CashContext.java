@@ -20,12 +20,12 @@ public class CashContext {
                 yield cashRebate;  // 将包装好的算法组合引用传递给cs对象
             }
             case 6 -> {  // 先满200返50，再打7折
-                CashNormal cn2 = new CashNormal();
-                CashRebate cr3 = new CashRebate(0.7d);
-                CashReturn cr4 = new CashReturn(200d, 50d);
-                cr3.decorate(cn2);  // 用打7折算法包装基本的原价算法
-                cr4.decorate(cr3);  // 满200返50算法装饰打7折算法
-                yield cr4;  // 将包装好的算法组合引用传递给cs对象
+                CashNormal cashNormal = new CashNormal();
+                CashRebate cashRebate = new CashRebate(0.7d);
+                CashReturn cashReturn = new CashReturn(200d, 50d);
+                cashRebate.decorate(cashNormal);  // 用打7折算法包装基本的原价算法
+                cashReturn.decorate(cashRebate);  // 满200返50算法装饰打7折算法
+                yield cashReturn;  // 将包装好的算法组合引用传递给cs对象
             }
             default -> throw new IllegalArgumentException("不支持的现金类型: " + cashType);
         };
