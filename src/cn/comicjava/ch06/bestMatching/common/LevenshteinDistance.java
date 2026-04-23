@@ -1,4 +1,4 @@
-package cn.comicjava.ch06.bestMatching;
+package cn.comicjava.ch06.bestMatching.common;
 
 /**
  *
@@ -7,6 +7,11 @@ package cn.comicjava.ch06.bestMatching;
  * @since 2026/4/23
  */
 public class LevenshteinDistance {
+    public static final LevenshteinDistance instance;
+    static{
+        instance = new LevenshteinDistance();
+    }
+
     public int minDistance(String word1, String word2) {
         final int rows = word1.length() + 1, cols = word2.length() + 1;
         int[][] dp = initDp(rows, cols);
@@ -34,11 +39,5 @@ public class LevenshteinDistance {
             dp[0][j] = j;
         }
         return dp;
-    }
-
-    public static void main(String[] args) {
-        LevenshteinDistance solution = new LevenshteinDistance();
-        System.out.println(solution.minDistance("horse", "ros")); // 3
-        System.out.println(solution.minDistance("intention", "execution")); // 5
     }
 }

@@ -1,11 +1,13 @@
 package cn.comicjava.ch06.bestMatching;
 
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import cn.comicjava.ch06.bestMatching.alg.BestMatchingCalculation;
+import cn.comicjava.ch06.bestMatching.alg.concurrency.BestMatchingBasicConcurrentCalculation;
+import cn.comicjava.ch06.bestMatching.common.BestMatchingData;
+import cn.comicjava.ch06.bestMatching.common.WordsLoader;
+import cn.comicjava.ch06.bestMatching.common.util.TimeUtil;
+
+import java.time.Instant;
 import java.util.List;
-import java.util.stream.Stream;
 
 /**
  *
@@ -15,11 +17,22 @@ import java.util.stream.Stream;
  */
 public class Main {
     public static void main(String[] args) {
-        try (Stream<String> lines = Files.lines(Paths.get("./data/UK Advanced Cryptics Dictionary.txt"), StandardCharsets.ISO_8859_1);) {
-            List<String> list = lines.toList();
-            System.out.println(list.get(7));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        Main main = new Main();
+        //main.runWith(new BestMatchingSerialCalculation());
+        main.runWith(new BestMatchingBasicConcurrentCalculation());
+    }
+
+    public void runWith(BestMatchingCalculation cal){
+        List<String> dictionary = WordsLoader.loadDictionary("./data/UK Advanced Cryptics Dictionary.txt");
+        String word = "Jvaa";
+        System.out.println("加载了 " + dictionary.size() + " 个单词");
+        Instant start = TimeUtil.start();
+        BestMatchingData result = cal.getBestMatchingWords(word, dictionary);
+        TimeUtil.end(start);
+
+        System.out.println("Word: " + word);
+        System.out.println("Minimun distance: " + result.distance());
+        System.out.println("最匹配的单词个数: " + result.words().size());
+        result.words().forEach(System.out::println);
     }
 }
