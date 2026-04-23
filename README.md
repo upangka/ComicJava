@@ -52,4 +52,5 @@ java -cp bin cn.comicjava.Main
 - [ch05-装饰器模式](./notes/ch05-装饰器模式.md)
 - [ch05-代理模式](./notes/ch05-代理模式.md)
 - [ch05-责任链模式](./notes/ch05-责任链模式.md)
+- [ch06-Timer深度解析](./notes/ch06-Timer深度解析.md)
 - [Git学习笔记](./notes/Git学习笔记.md) - Git 操作与 SSH 配置
