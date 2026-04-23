@@ -3,7 +3,7 @@
 [JDK17-Timer的文档](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Timer.html)
 提到将`ScheduledThreadPool`配置为一个线程能够到达Timer同样的效果。
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/2d7406a725104e8cb82339b2158982aa~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgUGttZXI=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMzExMjA0Nzg3MTgwMDU0MCJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1777530429&x-orig-sign=M46nSRQB46KQfPMyT4NArWyJV2s%3D)
+![image.png](../images/jcp/timer-1.png)
 
 
 # 目标掌握
@@ -17,12 +17,12 @@
 一个非常典型的多生产者，单一消费的案例。
 
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/3c6557a817d14d498bb3592d23c6e51e~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgUGttZXI=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMzExMjA0Nzg3MTgwMDU0MCJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1777530429&x-orig-sign=vz6yOZk0xgRX%2FKd81PHt0iPooZI%3D)
+![image.png](../images/jcp/timer-2.png)
 
 > 整体架构
 
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/825f983dbd914b62b88d89e4ce4bd53e~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgUGttZXI=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMzExMjA0Nzg3MTgwMDU0MCJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1777015319&x-orig-sign=FTpqfzvgEYyAHMPM%2BQ4d1igajf8%3D)
+![image.png](../images/jcp/timer-3.png)
 
 # 基础使用
 
@@ -61,10 +61,10 @@ public class TimerBaseUsage {
 > 
 > **下一次执行时间 = 当前任务开始执行时间+peroid**
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/92d72fc5f16c4aee9ef3564c15fa98f7~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgUGttZXI=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMzExMjA0Nzg3MTgwMDU0MCJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1777530429&x-orig-sign=srsYaL7gTC5ZiGxMWJ1YYcczKG0%3D)
+![image.png](../images/jcp/timer-4.png)
 
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/6c9f691827d146e6ba42a4a4217ddc2f~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgUGttZXI=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMzExMjA0Nzg3MTgwMDU0MCJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1777530429&x-orig-sign=3xfk6JonyZfHsz%2BiZluDa8nfAh0%3D)
+![image.png](../images/jcp/timer-5.png)
 
 距离上次开始时间，经过`period`多久后,继续执行。无限多次。
 
@@ -155,7 +155,7 @@ public class TimerFixDedayUsageV3 {
 
 这个单线程一直在一个while循环中，从一个任务队列中获取要执行的任务，如果队列为空这用jvm的监视器进行wait，否则从队列中取出任务（队列是一个最小堆，每次取出最小值），判断任务要执行的时间与当前时间，如果到了要执行了，创建一个新任务，并把新任务的下次执行的时间计算好，就是currentTime + period（源码中是currentTime - period是因为通过通过peroid的符号来区分是fix-delay还是fix-rate.fix-delay会把peroid处理成负数）
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/e50a5666819e4960b26d50d56c4686ce~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgUGttZXI=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMzExMjA0Nzg3MTgwMDU0MCJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1777530429&x-orig-sign=3Vb0XEap2tO9KIiNFBSi5xHggrg%3D)
+![image.png](../images/jcp/timer-6.png)
 
 ```java
 private void mainLoop() {
@@ -207,7 +207,7 @@ private void mainLoop() {
 `fixed-rate`(固定频率)：以**上次任务理论上开始执行的时间**为基准计算下次执行。会有**任务堆积**的现象产生
 
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/d4a71a3aa8a948c6b4d3f523f023c924~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgUGttZXI=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMzExMjA0Nzg3MTgwMDU0MCJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1777014067&x-orig-sign=Jyvb66QxbEOI93DCcBnwmjhkGgw%3D)
+![image.png](../images/jcp/timer-7.png)
 
 > 这里以任务运行时间超过peroid延迟时间来说明。
 
@@ -319,7 +319,7 @@ if (queue.isEmpty())  // 队列为空，退出
 
 在上面的`fixed-rate`中我们知道，以固定速率执行一个任务（它的理论执行时间是以任务上次理论执行时间计算的）。由于消费者TimerThread是一个单线程。如果前面有大任务，或者自身任务执行过长，但是peroid又短。很容易造成任务堆积。
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/7660e02fe49549c88d1aefca362045ff~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgUGttZXI=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMzExMjA0Nzg3MTgwMDU0MCJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1777016737&x-orig-sign=F9oLJlWbwkKSSz0uLyxOtQEutbU%3D)
+![image.png](../images/jcp/timer-8.png)
 
 [`TimerTaskDuiji`](https://github.com/upangka/ComicJava/blob/main/src/cn/comicjava/ch06/timer/TimerTaskDuiji.java)
 
@@ -411,4 +411,4 @@ public class TimerExceptionDemo {
 ```
 
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/494ffeb0511e4969962f09690107b6c3~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgUGttZXI=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMzExMjA0Nzg3MTgwMDU0MCJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1777017143&x-orig-sign=frY1K9OaI2s5ncpqA09loQKWngA%3D)
+![image.png](../images/jcp/timer-9.png)
