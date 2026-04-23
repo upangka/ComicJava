@@ -1,7 +1,7 @@
 package cn.comicjava.ch06.bestMatching;
 
 import cn.comicjava.ch06.bestMatching.alg.BestMatchingCalculation;
-import cn.comicjava.ch06.bestMatching.alg.concurrency.BestMatchingBasicConcurrentCalculation;
+import cn.comicjava.ch06.bestMatching.alg.concurrency.BestMatchingAdvancedConcurrentCalculation;
 import cn.comicjava.ch06.bestMatching.common.BestMatchingData;
 import cn.comicjava.ch06.bestMatching.common.WordsLoader;
 import cn.comicjava.ch06.bestMatching.common.util.TimeUtil;
@@ -19,7 +19,8 @@ public class Main {
     public static void main(String[] args) {
         Main main = new Main();
         //main.runWith(new BestMatchingSerialCalculation());
-        main.runWith(new BestMatchingBasicConcurrentCalculation());
+        // main.runWith(new BestMatchingBasicConcurrentCalculation());
+        main.runWith(new BestMatchingAdvancedConcurrentCalculation());
     }
 
     public void runWith(BestMatchingCalculation cal){
